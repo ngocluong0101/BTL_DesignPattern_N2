@@ -1,7 +1,5 @@
 package com.clothingstore.controller;
 
-package com.clothingstore.controller;
-
 import com.clothingstore.view.promotion.VoucherManagementView;
 
 public class VoucherManagementController {
