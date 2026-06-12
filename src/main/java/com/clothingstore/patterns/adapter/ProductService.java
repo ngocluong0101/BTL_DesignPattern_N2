@@ -1,5 +1,4 @@
-package com.clothingstore.service;
-
+package com.clothingstore.patterns.adapter;
 
 import java.util.List;
 
