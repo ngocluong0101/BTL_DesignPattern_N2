@@ -1,4 +1,4 @@
-﻿package com.clothingstore.model;
+package com.clothingstore.model;
 
 
 import com.clothingstore.patterns.sessionsingleton.Session;
@@ -12,6 +12,9 @@ public class Supplier {
     private String phone;
     private String address;
     private String email;
+    private String taxCode;
+    private String category;
+    private String contactPerson;
     private int adminId;
     private SupplierState state;
 
@@ -20,12 +23,15 @@ public class Supplier {
         this.state = new InActiveSupplierState(this);
     }
 
-    public Supplier(int id, String name, String phone, String address, String email, int adminId) {
+    public Supplier(int id, String name, String phone, String address, String email, String taxCode, String category, String contactPerson, int adminId) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.email = email;
+        this.taxCode = taxCode;
+        this.category = category;
+        this.contactPerson = contactPerson;
         this.adminId = adminId;
         this.state = new InActiveSupplierState(this);
     }
@@ -93,5 +99,29 @@ public class Supplier {
 
     public void setAdminId(int adminId) {
         this.adminId = adminId;
+    }
+
+    public String getTaxCode() {
+        return taxCode;
+    }
+
+    public void setTaxCode(String taxCode) {
+        this.taxCode = taxCode;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
     }
 }

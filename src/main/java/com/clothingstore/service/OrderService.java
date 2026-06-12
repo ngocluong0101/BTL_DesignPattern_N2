@@ -1,4 +1,4 @@
-﻿package com.clothingstore.service;
+package com.clothingstore.service;
 
 import com.clothingstore.dao.ConnectionManager;
 import com.clothingstore.dao.OrderDAO;

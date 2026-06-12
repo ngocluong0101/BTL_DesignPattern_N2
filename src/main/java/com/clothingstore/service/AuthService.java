@@ -1,4 +1,4 @@
-﻿package com.clothingstore.service;
+package com.clothingstore.service;
 
 public class AuthService {
 }

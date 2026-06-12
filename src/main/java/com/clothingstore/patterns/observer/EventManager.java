@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.observer;
+package com.clothingstore.patterns.observer;
 
 public class EventManager {
 }

@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.state;
+package com.clothingstore.patterns.state;
 
 
 import com.clothingstore.model.Order;

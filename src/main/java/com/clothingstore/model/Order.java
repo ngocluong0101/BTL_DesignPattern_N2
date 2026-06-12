@@ -1,4 +1,4 @@
-﻿package com.clothingstore.model;
+package com.clothingstore.model;
 
 import java.util.Date;
 import com.clothingstore.patterns.state.*;

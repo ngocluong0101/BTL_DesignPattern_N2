@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.adapter;
+package com.clothingstore.patterns.adapter;
 
 public class ProductServiceAdapter {
 }

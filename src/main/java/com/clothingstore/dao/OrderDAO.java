@@ -1,4 +1,4 @@
-﻿package com.clothingstore.dao;
+package com.clothingstore.dao;
 
 
 import java.sql.*;

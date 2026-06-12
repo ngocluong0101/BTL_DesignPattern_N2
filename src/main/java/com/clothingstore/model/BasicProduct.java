@@ -1,4 +1,4 @@
-﻿package com.clothingstore.model;
+package com.clothingstore.model;
 
 public class BasicProduct {
 }

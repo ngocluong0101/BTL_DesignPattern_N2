@@ -1,4 +1,4 @@
-﻿package com.clothingstore.database;
+package com.clothingstore.database;
 
 public class ConnectionManager {
 }

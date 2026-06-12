@@ -2,19 +2,16 @@ package com.clothingstore.util;
 
 import com.clothingstore.component.Navbar;
 import com.clothingstore.controller.*;
-import com.clothingstore.dao.admin.AdminDAO;
+
 import com.clothingstore.controller.OrderController;
-import com.clothingstore.dao.order.OrderDAO;
+
+import com.clothingstore.dao.AdminDAO;
+import com.clothingstore.dao.OrderDAO;
 import com.clothingstore.patterns.sessionsingleton.Session;
-import com.clothingstore.view.ProductView;
-import com.clothingstore.view.invoicesales.InvoiceSalesView;
-import com.clothingstore.controller.supplier.CreateSupplierController;
-import com.clothingstore.controller.supplier.SupplierController;
-import com.clothingstore.view.SupplierView;
-import com.clothingstore.controller.VoucherManagementController;
-import com.clothingstore.view.VoucherManagementView;
-import com.clothingstore.view.PointsManagementView;
-import com.clothingstore.view.AdminDiscountView;
+import com.clothingstore.view.customer.PointsManagementView;
+import com.clothingstore.view.order.ProductView;
+import com.clothingstore.view.promotion.AdminDiscountView;
+
 
 import javax.swing.*;
 import java.util.List;

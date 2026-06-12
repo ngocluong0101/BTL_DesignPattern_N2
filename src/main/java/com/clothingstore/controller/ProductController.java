@@ -1,4 +1,4 @@
-﻿package com.clothingstore.controller;
+package com.clothingstore.controller;
 
 import com.clothingstore.dao.product.ProductDAO;
 import com.clothingstore.model.product.Product1;
