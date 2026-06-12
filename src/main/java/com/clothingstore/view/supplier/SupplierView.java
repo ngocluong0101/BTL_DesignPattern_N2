@@ -277,6 +277,18 @@ public class SupplierView extends JFrame {
     public void setActivateButtonListener(ActionListener listener) { activateButton.addActionListener(listener); }
     public void setClearFormButtonListener(ActionListener listener) { clearFormButton.addActionListener(listener); }
 
+    public void refreshTable(List<Supplier> suppliers) {
+        tableModel.setRowCount(0);
+        setSupplierData(suppliers);
+        idField.setText("");
+        nameField.setText("");
+        phoneField.setText("");
+        addressField.setText("");
+        emailField.setText("");
+        stateField.setText("");
+    }
+
+
     public void showError(String message) {
         JOptionPane.showMessageDialog(this, message, "Lỗi", JOptionPane.ERROR_MESSAGE);
     }
