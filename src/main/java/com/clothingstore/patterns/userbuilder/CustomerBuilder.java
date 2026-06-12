@@ -1,6 +1,5 @@
 package com.clothingstore.patterns.userbuilder;
 
-
 import com.clothingstore.model.Customer;
 
 import java.util.Date;
@@ -83,18 +82,18 @@ public class CustomerBuilder implements UserBuilder {
             throw new RuntimeException("Builder not initialized. Call reset() first.");
         }
         if (levelName == null) {
-            customer.setLevel(new com.bach.patterns.state.BronzeLevel());
+            customer.setLevel(new com.clothingstore.patterns.state.BronzeLevel());
             return;
         }
         switch (levelName.toUpperCase()) {
             case "GOLD":
-                customer.setLevel(new com.bach.patterns.state.GoldLevel());
+                customer.setLevel(new com.clothingstore.patterns.state.GoldLevel());
                 break;
             case "SILVER":
-                customer.setLevel(new com.bach.patterns.state.SilverLevel());
+                customer.setLevel(new com.clothingstore.patterns.state.SilverLevel());
                 break;
             default:
-                customer.setLevel(new com.bach.patterns.state.BronzeLevel());
+                customer.setLevel(new com.clothingstore.patterns.state.BronzeLevel());
         }
     }
 
