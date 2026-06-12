@@ -98,7 +98,7 @@ public class CustomerService {
             stmt.close();
 
             // Sử dụng State Pattern để xác định level mới
-            com.bach.model.Customer tempCustomer = new com.bach.model.Customer();
+            com.clothingstore.model.Customer tempCustomer = new com.clothingstore.model.Customer();
             tempCustomer.setPoints(totalPoints);
             String newLevel = tempCustomer.getLevel().getLevelName();
 
