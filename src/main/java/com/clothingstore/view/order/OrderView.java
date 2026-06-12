@@ -277,12 +277,12 @@ public class OrderView extends JFrame {
             if (selectedIndex - 1 < vouchers.size()) {
                 IVoucher selectedVoucher = vouchers.get(selectedIndex - 1);
                 // Sử dụng DiscountContext để set strategy dựa trên loại voucher
-                if (selectedVoucher instanceof com.bach.model.FixedAmountVoucher) {
+                if (selectedVoucher instanceof com.clothingstore.model.FixedAmountVoucher) {
                     discountContext.setStrategy(new FixedAmountDiscountStrategy(
-                            ((com.bach.model.FixedAmountVoucher) selectedVoucher).getAmount()));
-                } else if (selectedVoucher instanceof com.bach.model.PercentageVoucher) {
+                            ((com.clothingstore.model.FixedAmountVoucher) selectedVoucher).getAmount()));
+                } else if (selectedVoucher instanceof com.clothingstore.model.PercentageVoucher) {
                     discountContext.setStrategy(new PercentageDiscountStrategy(
-                            ((com.bach.model.PercentageVoucher) selectedVoucher).getPercentage()));
+                            ((com.clothingstore.model.PercentageVoucher) selectedVoucher).getPercentage()));
                 }
                 voucherDiscount = discountContext.calculateDiscount(amountAfterLevelDiscount);
             }
@@ -357,11 +357,11 @@ public class OrderView extends JFrame {
             } else {
                 orderStatusLabel.setText("Trạng thái: " + status);
             }
-            payButton.setEnabled(currentOrder.getState() instanceof com.bach.patterns.state.PendingOrderState);
-            completeButton.setEnabled(currentOrder.getState() instanceof com.bach.patterns.state.PaidOrderState);
+            payButton.setEnabled(currentOrder.getState() instanceof com.clothingstore.patterns.state.PendingOrderState);
+            completeButton.setEnabled(currentOrder.getState() instanceof com.clothingstore.patterns.state.PaidOrderState);
             cancelButton.setEnabled(
-                    currentOrder.getState() instanceof com.bach.patterns.state.PendingOrderState ||
-                            currentOrder.getState() instanceof com.bach.patterns.state.PaidOrderState
+                    currentOrder.getState() instanceof com.clothingstore.patterns.state.PendingOrderState ||
+                            currentOrder.getState() instanceof com.clothingstore.patterns.state.PaidOrderState
             );
         } else {
             orderStatusLabel.setText("Trạng thái: (chưa có đơn hàng)");

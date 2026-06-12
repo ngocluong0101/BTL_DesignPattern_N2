@@ -1,5 +1,8 @@
 ﻿package com.clothingstore.patterns.strategy;
 
-public class DiscountStrategy {
+public interface DiscountStrategy {
+    double calculateDiscount(double amount);
+    String getDescription();
+    String getType();
+    double getValue();
 }
-
