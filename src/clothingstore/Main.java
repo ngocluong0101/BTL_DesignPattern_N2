@@ -1,4 +1,4 @@
-﻿package com.clothingstore;
+package com.clothingstore;
 
 public class Main {
 }

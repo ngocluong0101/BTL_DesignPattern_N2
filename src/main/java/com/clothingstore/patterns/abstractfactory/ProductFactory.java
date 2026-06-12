@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.abstractfactory;
+package com.clothingstore.patterns.abstractfactory;
 
 public class ProductFactory {
 }

@@ -1,4 +1,4 @@
-﻿package com.clothingstore.dao;
+package com.clothingstore.dao;
 
 import com.clothingstore.model.IVoucher;
 import com.clothingstore.model.PercentageVoucher;

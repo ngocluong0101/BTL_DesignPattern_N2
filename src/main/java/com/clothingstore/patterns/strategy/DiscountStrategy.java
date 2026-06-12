@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.strategy;
+package com.clothingstore.patterns.strategy;
 
 public interface DiscountStrategy {
     double calculateDiscount(double amount);

@@ -1,5 +1,3 @@
-﻿package com.clothingstore.dao;
-
+package com.clothingstore.dao;
 public class ProductDAO {
 }
-

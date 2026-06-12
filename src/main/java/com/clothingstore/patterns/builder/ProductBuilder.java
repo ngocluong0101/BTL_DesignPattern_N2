@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.builder;
+package com.clothingstore.patterns.builder;
 
 public class ProductBuilder {
 }

@@ -1,4 +1,4 @@
-﻿package com.clothingstore.model;
+package com.clothingstore.model;
 
 import com.clothingstore.patterns.state.MemberLevel;
 import com.clothingstore.patterns.state.BronzeLevel;

@@ -1,9 +1,10 @@
-﻿package com.clothingstore;
+package com.clothingstore;
 
 
 import com.clothingstore.controller.LoginController;
-import com.clothingstore.view.OrderView;
-import com.clothingstore.view.VoucherManagementView;
+import com.clothingstore.view.order.OrderView;
+import com.clothingstore.view.promotion.VoucherManagementView;
+
 
 import javax.swing.*;
 

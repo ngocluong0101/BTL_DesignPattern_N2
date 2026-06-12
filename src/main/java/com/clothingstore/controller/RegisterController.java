@@ -1,5 +1,4 @@
 package com.clothingstore.controller;
 
-public class OrderController {
+public class RegisterController {
 }
-

@@ -1,4 +1,4 @@
-﻿package com.clothingstore.patterns.decorator;
+package com.clothingstore.patterns.decorator;
 
 
 public abstract class ProductDecorator implements ProductComponent{

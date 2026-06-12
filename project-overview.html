@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview - Clothing Store Management</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background: var(--bg-main);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header & Layout */
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar-bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--sidebar-hover);
+            text-align: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 10px 0;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .nav-links li {
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 12px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--sidebar-hover);
+            color: white;
+            border-left: 4px solid var(--primary);
+        }
+
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .top-header {
+            background: var(--card-bg);
+            padding: 20px 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .top-header h1 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .top-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* Sections & Cards */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: #0f172a;
+            border-bottom: 2px solid var(--bg-main);
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg-main);
+            font-weight: 600;
+            color: #475569;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            background: #e0e7ff;
+            color: #3730a3;
+            margin-right: 5px;
+        }
+
+        .badge.pk {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge.fk {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.member {
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.8rem;
+        }
+
+        /* Code & Tree */
+        pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .tree {
+            font-family: Consolas, monospace;
+            background: var(--bg-main);
+            padding: 20px;
+            border-radius: 6px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .tree span.folder {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .tree span.file {
+            color: #475569;
+        }
+
+        /* Lists */
+        ul.custom-list {
+            list-style: none;
+        }
+
+        ul.custom-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        ul.custom-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">Clothing Store App</div>
+        <ul class="nav-links">
+            <li><a onclick="showSection('overview')" class="active" id="nav-overview">Tổng quan & Phân công</a></li>
+            <li><a onclick="showSection('architecture')" id="nav-architecture">Kiến trúc & Thư mục</a></li>
+            <li><a onclick="showSection('database')" id="nav-database">Database Design (28 Bảng)</a></li>
+            <li><a onclick="showSection('patterns')" id="nav-patterns">Design Patterns</a></li>
+            <li><a onclick="showSection('classes')" id="nav-classes">Class List</a></li>
+            <li><a onclick="showSection('guide')" id="nav-guide">Hướng dẫn chạy</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="top-header">
+            <h1>Tài Liệu Kỹ Thuật Dự Án</h1>
+            <p>Ứng dụng Desktop quản lý bán quần áo - Nhóm 5 thành viên</p>
+        </div>
+
+        <div class="content">
+            <!-- OVERVIEW -->
+            <div id="overview" class="section active">
+                <div class="card">
+                    <h2>Giới thiệu dự án</h2>
+                    <p>Dự án <strong>"Xây dựng ứng dụng desktop quản lý bán quần áo"</strong> là phần mềm quản lý toàn
+                        diện cho cửa hàng thời trang. Cơ sở dữ liệu được thiết kế <strong>tổng thể và thống
+                            nhất</strong> với 28 bảng chuẩn 3NF, phân bổ khéo léo để hỗ trợ độc lập cho 5 module do 5
+                        thành viên phụ trách.</p>
+                    <br>
+                    <p><strong>Công nghệ sử dụng:</strong> Java Core, Java Swing, MySQL (JDBC thuần không ORM), Kiến
+                        trúc 5-Tier.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Phân công nhiệm vụ nhóm (5 thành viên)</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thành viên</th>
+                                <th>Module phụ trách</th>
+                                <th>Design Pattern áp dụng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong><span class="badge member">Ly</span></strong></td>
+                                <td>Quản lý hóa đơn, Sự kiện, Thông báo</td>
+                                <td>Factory Method, Observer</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Linh</span></strong></td>
+                                <td>Quản lý sản phẩm, Loại, Kho</td>
+                                <td>Abstract Factory, Adapter</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Lương</span></strong></td>
+                                <td>Khách hàng, Tài khoản, Khuyến mãi</td>
+                                <td>Decorator, Builder</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">An</span></strong></td>
+                                <td>Quản lý đặt hàng, Voucher, Tích điểm</td>
+                                <td>Strategy, State</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Minh</span></strong></td>
+                                <td>Đăng nhập, Nhà cung cấp, Checkout</td>
+                                <td>Singleton, Facade</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ARCHITECTURE -->
+            <div id="architecture" class="section">
+                <div class="card">
+                    <h2>Cấu trúc thư mục (Folder Tree)</h2>
+                    <div class="tree">
+                        <span class="folder">BTL_DesignPattern_N2/</span><br>
+                        ├── <span class="file">pom.xml</span><br>
+                        ├── <span class="file">README.md</span><br>
+                        ├── <span class="file">Huong_Dan_Trien_Khai_Du_An.md</span><br>
+                        ├── <span class="file">Thiet_Ke_Co_So_Du_Lieu.md</span><br>
+                        └── <span class="folder">src/</span><br>
+                        └── <span class="folder">main/</span><br>
+                        └── <span class="folder">java/</span><br>
+                        └── <span class="folder">com/</span><br>
+                        └── <span class="folder">clothingstore/</span><br>
+                        ├── <span class="file">Main.java</span><br>
+                        ├── <span class="folder">config/</span><br>
+                        ├── <span class="folder">database/</span><br>
+                        ├── <span class="folder">model/</span><br>
+                        ├── <span class="folder">view/</span><br>
+                        ├── <span class="folder">controller/</span><br>
+                        ├── <span class="folder">service/</span><br>
+                        ├── <span class="folder">dao/</span><br>
+                        ├── <span class="folder">pattern/</span><br>
+                        │ ├── <span class="folder">factory/</span><br>
+                        │ ├── <span class="folder">abstractfactory/</span><br>
+                        │ ├── <span class="folder">builder/</span><br>
+                        │ ├── <span class="folder">adapter/</span><br>
+                        │ ├── <span class="folder">decorator/</span><br>
+                        │ ├── <span class="folder">observer/</span><br>
+                        │ ├── <span class="folder">state/</span><br>
+                        │ ├── <span class="folder">strategy/</span><br>
+                        │ ├── <span class="folder">singleton/</span><br>
+                        │ └── <span class="folder">facade/</span><br>
+                        └── <span class="folder">util/</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DATABASE -->
+            <div id="database" class="section">
+                <div class="card">
+                    <h2>Quan hệ chính (ERD) - 28 Bảng</h2>
+                    <pre>
+roles 1 --- n users
+users 1 --- 0..1 customers
+users 1 --- n user_sessions
+
+supplier_statuses 1 --- n suppliers
+suppliers 1 --- n products
+
+categories 1 --- n products
+product_statuses 1 --- n products
+products 1 --- n product_variants
+sizes 1 --- n product_variants
+colors 1 --- n product_variants
+
+users 1 --- n sales_invoices
+customers 1 --- n sales_invoices
+sales_invoices 1 --- n sales_invoice_details
+product_variants 1 --- n sales_invoice_details
+
+users 1 --- n purchase_invoices
+suppliers 1 --- n purchase_invoices
+purchase_invoices 1 --- n purchase_invoice_details
+product_variants 1 --- n purchase_invoice_details
+
+customers 1 --- n orders
+order_statuses 1 --- n orders
+orders 1 --- n order_details
+product_variants 1 --- n order_details
+vouchers 1 --- n orders
+
+orders 1 --- n payments
+payment_methods 1 --- n payments
+orders 1 --- n order_status_history
+order_statuses 1 --- n order_status_history
+
+products 1 --- n product_promotions
+promotions 1 --- n product_promotions
+
+membership_levels 1 --- n customers
+customers 1 --- 1 loyalty_points
+customers 1 --- n loyalty_point_histories
+
+users 1 --- n events
+events 1 --- n event_subscriptions
+customers 1 --- n event_subscriptions
+events 1 --- n notifications
+customers 1 --- n notifications
+                    </pre>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Tài khoản & Khách hàng <span class="badge member">Lương, Minh</span></h2>
+
+                    <h3>1. Bảng `roles`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>role_name</td>
+                            <td>VARCHAR(50)</td>
+                            <td>UNIQUE, NOT NULL</td>
+                        </tr>
+                    </table>
+
+                    <h3>2. Bảng `users` (Hỗ trợ Singleton)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>role_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>username</td>
+                            <td>VARCHAR(50)</td>
+                            <td>UNIQUE, NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>password</td>
+                            <td>VARCHAR(255)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>full_name</td>
+                            <td>VARCHAR(100)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>status</td>
+                            <td>BOOLEAN</td>
+                            <td>DEFAULT 1</td>
+                        </tr>
+                    </table>
+
+                    <h3>3. Bảng `user_sessions`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>user_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>login_time</td>
+                            <td>DATETIME</td>
+                            <td>DEFAULT CURRENT_TIMESTAMP</td>
+                        </tr>
+                        <tr>
+                            <td>token</td>
+                            <td>VARCHAR(255)</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <h3>4. Bảng `membership_levels`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>level_name</td>
+                            <td>VARCHAR(50)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>min_points</td>
+                            <td>INT</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                    </table>
+
+                    <h3>5. Bảng `customers` (Hỗ trợ Builder)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>user_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> UNIQUE, Có thể NULL</td>
+                        </tr>
+                        <tr>
+                            <td>membership_level_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span></td>
+                        </tr>
+                        <tr>
+                            <td>full_name</td>
+                            <td>VARCHAR(100)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>phone</td>
+                            <td>VARCHAR(20)</td>
+                            <td>UNIQUE, NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td>VARCHAR(100)</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Nhà cung cấp <span class="badge member">Minh</span></h2>
+
+                    <h3>6. Bảng `supplier_statuses`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>status_name</td>
+                            <td>VARCHAR(50)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                    </table>
+
+                    <h3>7. Bảng `suppliers`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>status_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td>VARCHAR(100)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>phone</td>
+                            <td>VARCHAR(20)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Sản phẩm & Kho <span class="badge member">Linh</span></h2>
+
+                    <h3>8. Bảng `categories` & 9. `product_statuses` & 10. `sizes` & 11. `colors`</h3>
+                    <p>Các bảng danh mục cơ bản (id INT PK, name/status_name VARCHAR NOT NULL).</p>
+
+                    <h3>12. Bảng `products` (Hỗ trợ Abstract Factory, Adapter)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>category_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>supplier_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>status_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td>VARCHAR(200)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>product_type</td>
+                            <td>VARCHAR(50)</td>
+                            <td>NOT NULL (VD: Basic, Premium)</td>
+                        </tr>
+                    </table>
+
+                    <h3>13. Bảng `product_variants` (Tồn kho thực tế)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>product_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>size_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>color_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>sku</td>
+                            <td>VARCHAR(50)</td>
+                            <td>UNIQUE, NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>price</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>stock_quantity</td>
+                            <td>INT</td>
+                            <td>DEFAULT 0</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Khuyến mãi & Voucher <span class="badge member">Lương, An</span></h2>
+
+                    <h3>14. Bảng `promotions` & 15. `product_promotions` (Lương - Hỗ trợ Decorator)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT (promotions)</td>
+                        </tr>
+                        <tr>
+                            <td>discount_type</td>
+                            <td>VARCHAR(20)</td>
+                            <td>NOT NULL (PERCENT, FIXED)</td>
+                        </tr>
+                        <tr>
+                            <td>discount_value</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>product_id, promotion_id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span><span class="badge fk">FK</span> (product_promotions)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h3>16. Bảng `vouchers` (An - Hỗ trợ Strategy)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>code</td>
+                            <td>VARCHAR(50)</td>
+                            <td>UNIQUE, NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>discount_type</td>
+                            <td>VARCHAR(20)</td>
+                            <td>NOT NULL (PERCENT, FIXED, FREE_SHIP)</td>
+                        </tr>
+                        <tr>
+                            <td>discount_value</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>min_order_value</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>DEFAULT 0</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Đặt hàng & Tích điểm <span class="badge member">An, Minh</span></h2>
+
+                    <h3>17. Bảng `loyalty_points` & 18. `loyalty_point_histories`</h3>
+                    <p>Lưu tổng điểm của Customer (`customer_id` PK/FK) và lịch sử cộng/trừ điểm.</p>
+
+                    <h3>19. Bảng `order_statuses` & 20. `orders` (Hỗ trợ State, Facade)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>customer_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>status_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>voucher_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NULL</td>
+                        </tr>
+                        <tr>
+                            <td>total_amount</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                    </table>
+
+                    <h3>21. Bảng `order_details`</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                        </tr>
+                        <tr>
+                            <td>order_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>variant_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span> NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>quantity</td>
+                            <td>INT</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                        <tr>
+                            <td>subtotal</td>
+                            <td>DECIMAL(12,2)</td>
+                            <td>NOT NULL</td>
+                        </tr>
+                    </table>
+
+                    <h3>22. Bảng `order_status_history` & 23. `payment_methods` & 24. `payments`</h3>
+                    <p>Lưu lịch sử đổi trạng thái đơn và phương thức/dữ liệu thanh toán của đơn hàng.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Nhóm Hóa đơn & Sự kiện <span class="badge member">Ly</span></h2>
+
+                    <h3>25. Bảng `sales_invoices` & 26. `purchase_invoices` (Hỗ trợ Factory Method)</h3>
+                    <p>Tách biệt hóa đơn nhập/xuất để khởi tạo Object phù hợp. Liên kết với `customers` / `suppliers` và
+                        `users`.</p>
+
+                    <h3>27. Bảng `sales_invoice_details` & 28. `purchase_invoice_details`</h3>
+                    <p>Lưu chi tiết biến thể (`variant_id`), số lượng, đơn giá cho từng loại hóa đơn.</p>
+
+                    <h3>29. Bảng `events` & 30. `event_subscriptions` & 31. `notifications` (Hỗ trợ Observer)</h3>
+                    <table>
+                        <tr>
+                            <th>Tên cột</th>
+                            <th>Kiểu dữ liệu</th>
+                            <th>Ràng buộc</th>
+                            <th>Mô tả</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span> AUTO_INCREMENT</td>
+                            <td>Bảng `events`</td>
+                        </tr>
+                        <tr>
+                            <td>customer_id, event_id</td>
+                            <td>INT</td>
+                            <td><span class="badge pk">PK</span><span class="badge fk">FK</span></td>
+                            <td>Bảng `event_subscriptions`</td>
+                        </tr>
+                        <tr>
+                            <td>customer_id, event_id</td>
+                            <td>INT</td>
+                            <td><span class="badge fk">FK</span></td>
+                            <td>Bảng `notifications`</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DESIGN PATTERNS -->
+            <div id="patterns" class="section">
+                <div class="card">
+                    <h2>Hỗ trợ Design Pattern theo Database</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thành viên</th>
+                                <th>Design Pattern</th>
+                                <th>Bảng liên quan</th>
+                                <th>Mục đích & Cách hỗ trợ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong><span class="badge member">Ly</span></strong></td>
+                                <td>Factory Method</td>
+                                <td><code>sales_invoices</code>, <code>purchase_invoices</code></td>
+                                <td>Bóc tách 2 loại bảng hóa đơn giúp Factory chọn đúng loại object để khởi tạo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Ly</span></strong></td>
+                                <td>Observer</td>
+                                <td><code>events</code>, <code>event_subscriptions</code></td>
+                                <td>Khách hàng vào `event_subscriptions` là Subscriber. Tạo event sinh ra
+                                    `notifications`.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Linh</span></strong></td>
+                                <td>Abstract Factory</td>
+                                <td><code>products</code></td>
+                                <td>Trường <code>product_type</code> (Basic/Premium) giúp rẽ nhánh tạo đúng Family sản
+                                    phẩm.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Linh</span></strong></td>
+                                <td>Adapter</td>
+                                <td><code>products</code>, <code>product_variants</code>...</td>
+                                <td>Dữ liệu chia nhỏ nhiều bảng, Adapter giúp gom các ResultSet JOIN thành 1 object
+                                    Product.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Lương</span></strong></td>
+                                <td>Builder</td>
+                                <td><code>customers</code>, <code>products</code></td>
+                                <td>Khởi tạo đối tượng nhiều cột an toàn trước khi Insert.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Lương</span></strong></td>
+                                <td>Decorator</td>
+                                <td><code>promotions</code>, <code>product_promotions</code></td>
+                                <td>Khuyến mãi lưu ở bảng riêng (không nằm ở product). Decorator sẽ bọc đè promotion lên
+                                    Product.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">An</span></strong></td>
+                                <td>Strategy</td>
+                                <td><code>vouchers</code></td>
+                                <td>Trường <code>discount_type</code> quyết định thuật toán (Percent, Fixed) tại
+                                    runtime.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">An</span></strong></td>
+                                <td>State</td>
+                                <td><code>orders</code>, <code>order_statuses</code></td>
+                                <td>Trạng thái lấy từ DB (`status_id`) kích hoạt Class State tương ứng (Pending/Paid).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Minh</span></strong></td>
+                                <td>Singleton</td>
+                                <td><code>users</code>, <code>user_sessions</code></td>
+                                <td>Load 1 lần lúc đăng nhập, duy trì phiên làm việc UserSession tĩnh.</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span class="badge member">Minh</span></strong></td>
+                                <td>Facade</td>
+                                <td>Nhiều bảng Checkout</td>
+                                <td>Gom 7-8 thao tác (trừ kho, cộng điểm, đổi state...) lôi từ nhiều bảng vào chung 1
+                                    Transaction API.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CLASS LIST -->
+            <div id="classes" class="section">
+                <div class="card">
+                    <h2>Danh sách Class Theo Nhóm</h2>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <h3>Model</h3>
+                            <ul class="custom-list">
+                                <li>User / Role / Customer</li>
+                                <li>Product / ProductVariant</li>
+                                <li>SalesInvoice / Order</li>
+                                <li>Voucher / Promotion</li>
+                                <li>Event / LoyaltyPoint</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h3>Controller</h3>
+                            <ul class="custom-list">
+                                <li>AuthController</li>
+                                <li>ProductController</li>
+                                <li>OrderController</li>
+                                <li>CheckoutController</li>
+                                <li>EventController</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h3>Service</h3>
+                            <ul class="custom-list">
+                                <li>AuthService</li>
+                                <li>ProductService</li>
+                                <li>CheckoutService</li>
+                                <li>EventService</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RUN GUIDE -->
+            <div id="guide" class="section">
+                <div class="card">
+                    <h2>Hướng dẫn chạy dự án</h2>
+                    <p>Dự án sử dụng Java thuần (không dùng Maven plugin để run trực tiếp) hoặc chạy qua file JAR. Mở
+                        thư mục gốc trong Terminal:</p>
+                    <br>
+                    <p><strong>1. Biên dịch toàn bộ mã nguồn:</strong></p>
+                    <pre>javac -d bin -sourcepath src/main/java src/main/java/com/clothingstore/Main.java</pre>
+
+                    <p><strong>2. Chạy ứng dụng (Nhớ link JDBC driver):</strong></p>
+                    <pre>java -cp "bin;lib/mysql-connector-j.jar" com.clothingstore.Main</pre>
+
+                    <p><em>Mẹo:</em> Khuyến nghị mở thư mục <code>BTL_DesignPattern_N2</code> bằng IntelliJ IDEA hoặc
+                        Eclipse, IDE sẽ tự động nhận diện JDK và thư viện JDBC để ấn nút Run một cách nhanh nhất.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            // Remove active from nav links
+            document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            // Highlight target nav link
+            document.getElementById('nav-' + sectionId).classList.add('active');
+
+            // Smooth scroll to top
+            document.querySelector('.content').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
