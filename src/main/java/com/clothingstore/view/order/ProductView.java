@@ -27,7 +27,7 @@ public class ProductView extends JFrame {
         setTitle("Quản Lý Sản Phẩm");
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
         // --- THÊM NAVBAR VÀO TRÊN CÙNG ---

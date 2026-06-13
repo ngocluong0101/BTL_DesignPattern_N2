@@ -40,7 +40,7 @@ public class SupplierView extends JFrame {
 
     public SupplierView() {
         setTitle("Quản lý nhà cung cấp");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1100, 700);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));

@@ -1,7 +1,10 @@
 package com.clothingstore.controller;
 
 import com.clothingstore.dto.LoginResult;
+import com.clothingstore.component.Navbar;
 import com.clothingstore.patterns.facade.LoginFacade;
+import com.clothingstore.patterns.sessionsingleton.Session;
+import com.clothingstore.util.Navigator;
 import com.clothingstore.view.auth.LoginView;
 
 import java.awt.event.ActionEvent;
@@ -39,17 +42,19 @@ public class LoginController {
         LoginResult result = loginFacade.authenticate(username, password);
 
         if (result.isSuccess()) {
-            view.dispose(); // Đóng màn hình đăng nhập
-            // Mở màn hình chính bằng Navigator
-//            Navigator.getInstance().showCustomerMainView();
-            new CustomerMainController();
+            String role = Session.getInstance().getRole();
+            if (role != null && (role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("manager"))) {
+                Navigator.navigate(Navbar.NavItem.SUPPLIER, view);
+            } else {
+                view.dispose();
+                new CustomerMainController();
+            }
         } else {
             view.showError(result.getMessage());
         }
     }
 
     private void openRegister() {
-        view.dispose();
-        new RegisterController();
+        Navigator.navigate(Navbar.NavItem.REGISTER, view);
     }
 }

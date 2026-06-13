@@ -1,9 +1,11 @@
 package com.clothingstore.controller.supplier;
 
+import com.clothingstore.component.Navbar;
 import com.clothingstore.model.Supplier;
 import com.clothingstore.patterns.supplierstate.ActiveSupplierState;
 import com.clothingstore.patterns.supplierstate.InActiveSupplierState;
 import com.clothingstore.service.SupplierService;
+import com.clothingstore.util.Navigator;
 import com.clothingstore.view.supplier.SupplierView;
 
 public class SupplierController {
@@ -27,8 +29,7 @@ public class SupplierController {
     }
 
     public void addSupplier(){
-        supplierView.dispose();
-        new CreateSupplierController();
+        Navigator.navigate(Navbar.NavItem.CREATE_SUPPLIER, supplierView);
     }
 
     public void editSupplier() {

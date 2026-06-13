@@ -130,6 +130,10 @@ public class InvoiceSalesView extends JFrame {
         return btnExport;
     }
 
+    public void displaySearchResult(String result) {
+        JOptionPane.showMessageDialog(this, result, "Kết quả tìm kiếm hóa đơn", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     // ✅ Hàm chạy thử
 //    public static void main(String[] args) {
 //        SwingUtilities.invokeLater(() -> {

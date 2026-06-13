@@ -1,6 +1,8 @@
 package com.clothingstore.controller;
 
+import com.clothingstore.component.Navbar;
 import com.clothingstore.model.Supplier;
+import com.clothingstore.util.Navigator;
 import com.clothingstore.service.SupplierService;
 import com.clothingstore.view.supplier.SupplierView;
 
@@ -64,15 +66,7 @@ public class SupplierController {
     class AddListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                Supplier supplier = view.getSelectedSupplierFromForm();
-                service.createSupplier(supplier);
-                view.showMessage("Thêm nhà cung cấp thành công!");
-                loadSuppliers();
-                view.clearForm();
-            } catch (Exception ex) {
-                view.showError(ex.getMessage());
-            }
+            Navigator.navigate(Navbar.NavItem.CREATE_SUPPLIER, view);
         }
     }
 
