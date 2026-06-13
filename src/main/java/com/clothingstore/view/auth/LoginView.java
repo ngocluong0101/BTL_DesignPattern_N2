@@ -19,46 +19,59 @@ public class LoginView extends JFrame {
 
     public LoginView() {
         setTitle("Login");
-        setSize(500, 300);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-        setResizable(false); // Prevent resizing
-
-
-
+        setResizable(false);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        // Set panel bounds below the navbar (assuming navbar height is 50)
-        panel.setBounds(0, 50, 500, 450);
+        panel.setBackground(new Color(245, 247, 250));
 
+        // Tiêu đề
+        JLabel titleLabel = new JLabel("LOGIN SYSTEM");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setBounds(190, 30, 250, 40);
+        panel.add(titleLabel);
 
-        JLabel usernameLabel = new JLabel("Tên đăng nhập:");
-
-        usernameLabel.setBounds(10, 20, 80, 25);
+        // Username
+        JLabel usernameLabel = new JLabel("Username");
+        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        usernameLabel.setBounds(130, 100, 100, 25);
         panel.add(usernameLabel);
 
-        usernameField = new JTextField(20);
-        usernameField.setBounds(100, 20, 165, 25);
+        usernameField = new JTextField();
+        usernameField.setFont(new Font("Arial", Font.PLAIN, 14));
+        usernameField.setBounds(230, 100, 220, 35);
         panel.add(usernameField);
 
-        JLabel passwordLabel = new JLabel("Mật khẩu:");
-        passwordLabel.setBounds(10, 50, 80, 25);
+        // Password
+        JLabel passwordLabel = new JLabel("Password");
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordLabel.setBounds(130, 150, 100, 25);
         panel.add(passwordLabel);
 
-        passwordField = new JPasswordField(20);
-        passwordField.setBounds(100, 50, 165, 25);
+        passwordField = new JPasswordField();
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordField.setBounds(230, 150, 220, 35);
         panel.add(passwordField);
 
-
+        // Nút đăng nhập
         loginButton = new JButton("Đăng nhập");
-        loginButton.setBounds(10, 80, 125, 25); // Set same width
+        loginButton.setBounds(170, 240, 120, 40);
+        loginButton.setBackground(new Color(52, 152, 219));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFocusPainted(false);
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(loginButton);
 
+        // Nút đăng ký
         registerButton = new JButton("Đăng ký");
-
-        registerButton.setBounds(140, 80, 125, 25); // Set same width
+        registerButton.setBounds(310, 240, 120, 40);
+        registerButton.setBackground(new Color(46, 204, 113));
+        registerButton.setForeground(Color.WHITE);
+        registerButton.setFocusPainted(false);
+        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(registerButton);
 
         add(panel);
