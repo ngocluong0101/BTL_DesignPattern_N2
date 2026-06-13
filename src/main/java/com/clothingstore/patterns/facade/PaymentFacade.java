@@ -23,7 +23,7 @@ public class PaymentFacade {
         this.inventoryService = new InventoryService();
     }
 
-    public PaymentResult pay(int orderId, IPaymentStrategy paymentStrategy) {
+    public PaymentResult pay(int orderId, IPaymentStrategy paymentStrategy) throws SQLException {
         if (!Session.getInstance().isLoggedIn()) {
             return new PaymentResult(false, "Vui lòng đăng nhập trước khi thanh toán");
         }

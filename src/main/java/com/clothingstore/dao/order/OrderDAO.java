@@ -1,6 +1,7 @@
 package com.clothingstore.dao.order;
 
 import com.clothingstore.model.Order;
+import com.clothingstore.database.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -3,6 +3,7 @@ package com.clothingstore.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import com.clothingstore.database.ConnectionManager;
 
 public class InvoiceService {
     public void createInvoice(int orderId) throws Exception {

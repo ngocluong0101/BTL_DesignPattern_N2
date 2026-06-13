@@ -17,6 +17,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.List;
 
 public class OrderView extends JFrame {
@@ -184,7 +185,13 @@ public class OrderView extends JFrame {
 
         // Thêm các nút thao tác trạng thái
         payButton = new JButton("Thanh toán");
-        payButton.addActionListener(e -> handlePayOrder());
+        payButton.addActionListener(e -> {
+            try {
+                handlePayOrder();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         buttonPanel.add(payButton);
         // Ẩn nút Giao hàng
         // shipButton = new JButton("Giao hàng");
@@ -311,7 +318,7 @@ public class OrderView extends JFrame {
     }
 
     // Thêm các hàm thao tác trạng thái
-    private void handlePayOrder() {
+    private void handlePayOrder() throws SQLException {
         if (currentOrder != null) {
             com.clothingstore.patterns.facade.PaymentFacade paymentFacade = new com.clothingstore.patterns.facade.PaymentFacade();
             com.clothingstore.patterns.strategy.IPaymentStrategy strategy = null;

@@ -2,6 +2,7 @@ package com.clothingstore.dao.discount;
 
 
 import com.clothingstore.model.Discount;
+import com.clothingstore.database.ConnectionManager;
 
 import java.sql.*;
 

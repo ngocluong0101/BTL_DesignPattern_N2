@@ -4,6 +4,7 @@ import com.clothingstore.dto.LoginResult;
 import com.clothingstore.patterns.facade.LoginFacade;
 import com.clothingstore.view.auth.LoginView;
 import com.clothingstore.util.Navigator;
+import com.clothingstore.view.customer.CustomerMainView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,8 @@ public class LoginController {
         if (result.isSuccess()) {
             view.dispose(); // Đóng màn hình đăng nhập
             // Mở màn hình chính bằng Navigator
-            Navigator.getInstance().showCustomerMainView(); 
+//            Navigator.getInstance().showCustomerMainView();
+            new CustomerMainController();
         } else {
             view.showError(result.getMessage());
         }
