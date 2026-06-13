@@ -1,0 +1,4 @@
+db:
+  url: jdbc:mysql://localhost:3306/cvdtt?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+  username: root
+  password: 123456
