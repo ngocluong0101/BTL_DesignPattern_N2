@@ -30,8 +30,8 @@ public class CustomerMainController {
 
     private void openProfileView() {
         JOptionPane.showMessageDialog(view, "Đi đến trang View Profile");
-        // new ProfileView().setVisible(true);
-        // view.dispose();
+//         new ProfileView().setVisible(true);
+//         view.dispose();
     }
 
     private void openEditProfile() {
@@ -42,8 +42,8 @@ public class CustomerMainController {
 
     private void openProductListView() {
         JOptionPane.showMessageDialog(view, "Đi đến danh sách sản phẩm");
-        // new ProductListView().setVisible(true);
-        // view.dispose();
+//         new ProductListView().setVisible(true);
+//         view.dispose();
     }
 
     private void openOrderHistory() {

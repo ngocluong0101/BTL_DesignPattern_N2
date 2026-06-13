@@ -3,8 +3,6 @@ package com.clothingstore.controller;
 import com.clothingstore.dto.LoginResult;
 import com.clothingstore.patterns.facade.LoginFacade;
 import com.clothingstore.view.auth.LoginView;
-import com.clothingstore.util.Navigator;
-import com.clothingstore.view.customer.CustomerMainView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +19,13 @@ public class LoginController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleLogin();
+            }
+        });
+
+        this.view.addRegisterListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openRegister();
             }
         });
         
@@ -41,5 +46,10 @@ public class LoginController {
         } else {
             view.showError(result.getMessage());
         }
+    }
+
+    private void openRegister() {
+        view.dispose();
+        new RegisterController();
     }
 }

@@ -92,7 +92,7 @@ public class CustomerDAO {
                 throw new SQLException("Creating customer failed, no rows affected.");
             }
         } catch (SQLException e) {
-            System.out.println("Error while creating customer: " + e.getMessage());
+            throw new IllegalStateException("Không thể tạo tài khoản khách hàng: " + e.getMessage(), e);
         } finally {
             ConnectionManager.closeQuietly(rs);
             ConnectionManager.closeQuietly(statement);
