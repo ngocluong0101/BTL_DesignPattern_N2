@@ -1,6 +1,5 @@
 package com.clothingstore.controller;
 
-import com.clothingstore.factory.invoicefactorymethod.Invoice;
 import com.clothingstore.factory.invoicefactorymethod.InvoiceFactory;
 import com.clothingstore.factory.invoicefactorymethod.PurchaseInvoiceFactory;
 import com.clothingstore.patterns.sessionsingleton.Session;
