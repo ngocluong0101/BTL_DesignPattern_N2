@@ -49,7 +49,7 @@ public class OrderDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderId);
             stmt.setInt(2, voucherId);
@@ -67,7 +67,7 @@ public class OrderDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, status);
             stmt.setInt(2, orderId);
@@ -86,7 +86,7 @@ public class OrderDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, customerId);
             rs = stmt.executeQuery();
@@ -116,7 +116,7 @@ public class OrderDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order.getBookingId());
             rs = stmt.executeQuery();

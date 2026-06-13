@@ -14,7 +14,7 @@ public class VoucherDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, 1); // Default admin ID
             stmt.setString(2, voucher.getName());
@@ -48,7 +48,7 @@ public class VoucherDAO {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -83,7 +83,7 @@ public class VoucherDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, voucherId);
             stmt.executeUpdate();
@@ -100,7 +100,7 @@ public class VoucherDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, voucher.getName());
             stmt.setDouble(2, voucher.getStartValue());

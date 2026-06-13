@@ -10,7 +10,7 @@ public class SupplierDAO {
     public List<Supplier> findAll() {
         List<Supplier> list = new ArrayList<>();
         String sql = "SELECT * FROM suppliers ORDER BY id_suppliers DESC";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -36,7 +36,7 @@ public class SupplierDAO {
             sql.append(" AND state = ?");
         }
         
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
             
             int paramIndex = 1;
@@ -68,7 +68,7 @@ public class SupplierDAO {
 
     public Supplier findById(int id) {
         String sql = "SELECT * FROM suppliers WHERE id_suppliers = ?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -84,7 +84,7 @@ public class SupplierDAO {
 
     public boolean insert(Supplier supplier) {
         String sql = "INSERT INTO suppliers (name, phone, address, email, tax_code, category, contact_person, state, id_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, supplier.getName());
             stmt.setString(2, supplier.getPhone());
@@ -105,7 +105,7 @@ public class SupplierDAO {
 
     public boolean update(Supplier supplier) {
         String sql = "UPDATE suppliers SET name=?, phone=?, address=?, email=?, tax_code=?, category=?, contact_person=?, state=? WHERE id_suppliers=?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, supplier.getName());
             stmt.setString(2, supplier.getPhone());
@@ -126,7 +126,7 @@ public class SupplierDAO {
 
     public boolean deleteById(int id) {
         String sql = "DELETE FROM suppliers WHERE id_suppliers = ?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0;
@@ -153,7 +153,7 @@ public class SupplierDAO {
 
     public boolean hasRelatedProducts(int supplierId) {
         String sql = "SELECT COUNT(*) FROM products WHERE id_suppliers = ?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, supplierId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -168,7 +168,7 @@ public class SupplierDAO {
     }
 
     private boolean checkExists(String sql, String value, int id) {
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, value);
             if (id != -1) {

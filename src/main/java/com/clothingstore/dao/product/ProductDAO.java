@@ -15,7 +15,7 @@ public class ProductDAO {
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM products";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -35,7 +35,7 @@ public class ProductDAO {
 
     public void updatePrice(int productId, float newPrice) {
         String sql = "UPDATE products SET price = ? WHERE id_products = ?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setFloat(1, newPrice);
             stmt.setInt(2, productId);
@@ -50,7 +50,7 @@ public class ProductDAO {
         List<Product1> danhSach = new ArrayList<>();
         String sql = "SELECT * FROM products";
 
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -86,7 +86,7 @@ public class ProductDAO {
     public void insert(Product1 product) {
         String sql = "INSERT INTO products (id_suppliers, name_products, description, price, state, id_admin) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // stmt.setInt(1, product.getId());
@@ -107,7 +107,7 @@ public class ProductDAO {
     public void update(Product1 product) {
         String sql = "UPDATE products SET id_suppliers = ?, name_products = ?, description = ?, price = ?, state = ?, id_admin = ? WHERE id_products = ?";
 
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             //stmt.setInt(7, product.getId());
@@ -129,7 +129,7 @@ public class ProductDAO {
     public void delete(int id) {
         String sql = "DELETE FROM products WHERE id_products = ?";
 
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);

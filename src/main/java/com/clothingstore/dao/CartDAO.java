@@ -18,7 +18,7 @@ public class CartDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, customerId);
             rs = stmt.executeQuery();
@@ -47,7 +47,7 @@ public class CartDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, cartId);
             stmt.setInt(2, productId);
@@ -66,7 +66,7 @@ public class CartDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, customerId);
             rs = stmt.executeQuery();
@@ -89,7 +89,7 @@ public class CartDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, customerId);
             stmt.executeUpdate();
@@ -112,7 +112,7 @@ public class CartDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, cartId);
             stmt.executeUpdate();

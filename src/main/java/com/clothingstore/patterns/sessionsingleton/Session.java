@@ -56,4 +56,22 @@ public class Session {
         }
         return instance;
     }
+
+    public void login(int id, String username, String role) {
+        this.id = id;
+        this.username = username;
+        this.role = role;
+        this.cratedAt = LocalDateTime.now();
+    }
+
+    public void logout() {
+        this.id = 0;
+        this.username = null;
+        this.role = null;
+        this.cratedAt = null;
+    }
+
+    public boolean isLoggedIn() {
+        return this.username != null;
+    }
 }

@@ -24,7 +24,7 @@ public class CustomerDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
         try{
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             statement = conn.prepareStatement(sql);
             statement.setNString(1, username);
             statement.setNString(2, password);
@@ -53,7 +53,7 @@ public class CustomerDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
         try{
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             statement = conn.prepareStatement(sql);
             statement.setNString(1, username);
             rs = statement.executeQuery();
@@ -79,7 +79,7 @@ public class CustomerDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
         try{
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             statement = conn.prepareStatement(sql);
             statement.setNString(1, customer.getUsername());
             statement.setNString(2, customer.getPassword());
@@ -109,7 +109,7 @@ public class CustomerDAO {
         PreparedStatement statement = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             statement = conn.prepareStatement(sql);
             rs = statement.executeQuery();
             UserDirector director = new UserDirector();

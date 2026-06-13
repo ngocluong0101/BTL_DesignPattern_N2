@@ -313,11 +313,29 @@ public class OrderView extends JFrame {
     // Thêm các hàm thao tác trạng thái
     private void handlePayOrder() {
         if (currentOrder != null) {
-            orderService.payOrder(currentOrder);
-            currentOrder = orderService.getLatestOrderForCustomer(customerId);
-            updateOrderStatusUI();
-            loadCartData();
-            JOptionPane.showMessageDialog(this, "Đã thanh toán đơn hàng!");
+            com.clothingstore.patterns.facade.PaymentFacade paymentFacade = new com.clothingstore.patterns.facade.PaymentFacade();
+            com.clothingstore.patterns.strategy.IPaymentStrategy strategy = null;
+            
+            String selectedMethod = (String) paymentMethodCombo.getSelectedItem();
+            if ("Chuyển khoản".equals(selectedMethod)) {
+                strategy = new com.clothingstore.patterns.strategy.BankTransferPaymentStrategy();
+            } else if ("Thẻ tín dụng".equals(selectedMethod) || "Momo".equals(selectedMethod)) {
+                strategy = new com.clothingstore.patterns.strategy.MomoPaymentStrategy();
+            } else {
+                strategy = new com.clothingstore.patterns.strategy.CashPaymentStrategy();
+            }
+
+            com.clothingstore.dto.PaymentResult result = paymentFacade.pay(currentOrder.getId(), strategy);
+
+            if (result.isSuccess()) {
+                orderService.payOrder(currentOrder);
+                currentOrder = orderService.getLatestOrderForCustomer(customerId);
+                updateOrderStatusUI();
+                loadCartData();
+                JOptionPane.showMessageDialog(this, result.getMessage());
+            } else {
+                JOptionPane.showMessageDialog(this, result.getMessage(), "Lỗi Thanh Toán", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     // private void handleShipOrder() {
