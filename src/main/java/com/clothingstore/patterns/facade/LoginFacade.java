@@ -20,7 +20,13 @@ public class LoginFacade {
             return new LoginResult(false, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
         }
 
-        Admin user = userDAO.findByUsername(username);
+        Admin user;
+        try {
+            user = userDAO.findByUsername(username);
+        } catch (IllegalStateException e) {
+            return new LoginResult(false, e.getMessage());
+        }
+
         if (user == null) {
             return new LoginResult(false, "Sai tên đăng nhập hoặc mật khẩu");
         }
