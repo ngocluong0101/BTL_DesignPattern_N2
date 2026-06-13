@@ -26,7 +26,7 @@ public class CustomerService {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, customerId);
             rs = stmt.executeQuery();
@@ -50,7 +50,7 @@ public class CustomerService {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, customerId);
             rs = stmt.executeQuery();
@@ -77,7 +77,7 @@ public class CustomerService {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
 
             // Cập nhật điểm
             stmt = conn.prepareStatement(updatePointsSql);
@@ -136,7 +136,7 @@ public class CustomerService {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             // Đặt lại điểm
             stmt = conn.prepareStatement(updatePointsSql);
             stmt.setInt(1, customerId);

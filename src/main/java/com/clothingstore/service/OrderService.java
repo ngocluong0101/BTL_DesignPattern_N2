@@ -31,7 +31,7 @@ public class OrderService {
     public void createOrder(int customerId, int cartId, double totalAmount, String paymentMethod, String note) {
         Connection conn = null;
         try {
-            conn = ConnectionManager.getConnection();
+            conn = ConnectionManager.getInstance().getConnection();
             conn.setAutoCommit(false);
 
             int bookingId = orderDAO.createBooking(conn, customerId, cartId, totalAmount);

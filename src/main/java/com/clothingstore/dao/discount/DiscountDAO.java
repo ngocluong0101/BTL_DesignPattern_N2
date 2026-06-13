@@ -10,7 +10,7 @@ public class DiscountDAO {
 
     public void addDiscount(Discount d) {
         String sql = "INSERT INTO discount (product_id, discount_type, value, start_date, end_date) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, d.getProductId());
             ps.setString(2, d.getDiscountType());
@@ -25,7 +25,7 @@ public class DiscountDAO {
 
     public Discount getActiveDiscount(int productId) {
         String sql = "SELECT * FROM discount WHERE product_id = ? AND CURDATE() BETWEEN start_date AND end_date";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, productId);
             ResultSet rs = ps.executeQuery();
@@ -47,7 +47,7 @@ public class DiscountDAO {
 
     public void updateDiscount(Discount d) {
         String sql = "UPDATE discount SET discount_type = ?, value = ?, start_date = ?, end_date = ? WHERE id = ?";
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, d.getDiscountType());
@@ -65,7 +65,7 @@ public class DiscountDAO {
     public void deleteDiscountByProductId(int productId) {
         String sql = "DELETE FROM discount WHERE product_id = ?";
 
-        try (Connection conn = ConnectionManager.getConnection();
+        try (Connection conn = ConnectionManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, productId);
