@@ -3,6 +3,7 @@ package com.clothingstore.view.auth;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.awt.*;
 
 public class RegisterView extends JFrame {
 
@@ -15,58 +16,124 @@ public class RegisterView extends JFrame {
     private JButton registerButton;
     private JButton loginButton;
 
-    public RegisterView(){
+    public RegisterView() {
         setTitle("Register");
-        setSize(400, 300);
+        setSize(650, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false); // Prevent resizing
+        setResizable(false);
+
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        JLabel usernameLabel = new JLabel("Tên đăng nhập:");
-        usernameLabel.setBounds(10, 20, 80, 25);
+        panel.setBackground(new Color(245, 247, 250));
+
+        // Tiêu đề
+        JLabel titleLabel = new JLabel("CREATE ACCOUNT");
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
+        titleLabel.setBounds(210, 20, 250, 40);
+        panel.add(titleLabel);
+
+        Font labelFont = new Font("SansSerif", Font.PLAIN, 14);
+        Font fieldFont = new Font("SansSerif", Font.PLAIN, 14);
+
+        int labelX = 120;
+        int fieldX = 250;
+        int width = 220;
+        int height = 35;
+        int y = 90;
+        int gap = 50;
+
+        // Username
+        JLabel usernameLabel = new JLabel("Tên đăng nhập");
+        usernameLabel.setFont(labelFont);
+        usernameLabel.setBounds(labelX, y, 120, 35);
         panel.add(usernameLabel);
-        usernameField = new JTextField(20);
-        usernameField.setBounds(100, 20, 165, 25);
+
+        usernameField = new JTextField();
+        usernameField.setFont(fieldFont);
+        usernameField.setBounds(fieldX, y, width, height);
         panel.add(usernameField);
-        JLabel passwordLabel = new JLabel("Mật khẩu:");
-        passwordLabel.setBounds(10, 50, 80, 25);
+
+        // Password
+        y += gap;
+        JLabel passwordLabel = new JLabel("Mật khẩu");
+        passwordLabel.setFont(labelFont);
+        passwordLabel.setBounds(labelX, y, 120, 35);
         panel.add(passwordLabel);
-        passwordField = new JPasswordField(20);
-        passwordField.setBounds(100, 50, 165, 25);
+
+        passwordField = new JPasswordField();
+        passwordField.setFont(fieldFont);
+        passwordField.setBounds(fieldX, y, width, height);
         panel.add(passwordField);
-        JLabel fullNameLabel = new JLabel("Tên đầy đủ:");
-        fullNameLabel.setBounds(10, 80, 80, 25);
+
+        // Full Name
+        y += gap;
+        JLabel fullNameLabel = new JLabel("Họ và tên");
+        fullNameLabel.setFont(labelFont);
+        fullNameLabel.setBounds(labelX, y, 120, 35);
         panel.add(fullNameLabel);
-        fullNameField = new JTextField(20);
-        fullNameField.setBounds(100, 80, 165, 25);
+
+        fullNameField = new JTextField();
+        fullNameField.setFont(fieldFont);
+        fullNameField.setBounds(fieldX, y, width, height);
         panel.add(fullNameField);
-        JLabel phoneLabel = new JLabel("Số điện thoại:");
-        phoneLabel.setBounds(10, 110, 80, 25);
+
+        // Phone
+        y += gap;
+        JLabel phoneLabel = new JLabel("Số điện thoại");
+        phoneLabel.setFont(labelFont);
+        phoneLabel.setBounds(labelX, y, 120, 35);
         panel.add(phoneLabel);
-        phoneField = new JTextField(20);
-        phoneField.setBounds(100, 110, 165, 25);
+
+        phoneField = new JTextField();
+        phoneField.setFont(fieldFont);
+        phoneField.setBounds(fieldX, y, width, height);
         panel.add(phoneField);
-        JLabel addressLabel = new JLabel("Địa chỉ:");
-        addressLabel.setBounds(10, 140, 80, 25);
+
+        // Address
+        y += gap;
+        JLabel addressLabel = new JLabel("Địa chỉ");
+        addressLabel.setFont(labelFont);
+        addressLabel.setBounds(labelX, y, 120, 35);
         panel.add(addressLabel);
-        addressField = new JTextField(20);
-        addressField.setBounds(100, 140, 165, 25);
+
+        addressField = new JTextField();
+        addressField.setFont(fieldFont);
+        addressField.setBounds(fieldX, y, width, height);
         panel.add(addressField);
-        JLabel dateOfBirthLabel = new JLabel("Ngày sinh:");
-        dateOfBirthLabel.setBounds(10, 170, 80, 25);
+
+        // Date of Birth
+        y += gap;
+        JLabel dateOfBirthLabel = new JLabel("Ngày sinh");
+        dateOfBirthLabel.setFont(labelFont);
+        dateOfBirthLabel.setBounds(labelX, y, 120, 35);
         panel.add(dateOfBirthLabel);
+
         dateOfBirthSpinner = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(dateOfBirthSpinner, "dd/MM/yyyy");
+        JSpinner.DateEditor dateEditor =
+                new JSpinner.DateEditor(dateOfBirthSpinner, "dd/MM/yyyy");
         dateOfBirthSpinner.setEditor(dateEditor);
-        dateOfBirthSpinner.setBounds(100, 170, 165, 25);
+        dateOfBirthSpinner.setFont(fieldFont);
+        dateOfBirthSpinner.setBounds(fieldX, y, width, height);
         panel.add(dateOfBirthSpinner);
-        registerButton = new JButton("Đăng kí");
-        registerButton.setBounds(10, 200, 125, 25); // Set same width
+
+        // Buttons
+        registerButton = new JButton("Đăng ký");
+        registerButton.setBounds(190, 390, 120, 40);
+        registerButton.setBackground(new Color(46, 204, 113));
+        registerButton.setForeground(Color.WHITE);
+        registerButton.setFocusPainted(false);
+        registerButton.setFont(new Font("SansSerif", Font.BOLD, 14));
         panel.add(registerButton);
+
         loginButton = new JButton("Đăng nhập");
-        loginButton.setBounds(140, 200, 125, 25); // Set same width
+        loginButton.setBounds(330, 390, 120, 40);
+        loginButton.setBackground(new Color(52, 152, 219));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFocusPainted(false);
+        loginButton.setFont(new Font("SansSerif", Font.BOLD, 14));
         panel.add(loginButton);
+
         add(panel);
     }
 
