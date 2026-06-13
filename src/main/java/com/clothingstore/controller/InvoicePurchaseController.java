@@ -91,7 +91,7 @@ public class InvoicePurchaseController {
     }
 
     private void openSearchDialog() {
-        InvoicePurchaseSearchDialog dialog = new InvoicePurchaseSearchDialog(null);
+        InvoicePurchaseSearchDialog dialog = new InvoicePurchaseSearchDialog(view);
 
         dialog.getBtnSearch().addActionListener(event -> {
             String idText = dialog.getTxtSearchId().getText().trim();
@@ -100,11 +100,13 @@ public class InvoicePurchaseController {
                     int invoiceId = Integer.parseInt(idText);
                     Invoice retrievedSales = purchaseFactory.retrieveInvoice(invoiceId);
                     String result = retrievedSales.exportInvoice(invoiceId);
-                    dialog.displayResult(result);
+                    view.displaySearchResult(result);
                 } catch (NumberFormatException ex) {
-                    dialog.displayResult("ID không hợp lệ.");
+                    String message = "ID không hợp lệ.";
+                    view.displaySearchResult(message);
                 } catch (SQLException e) {
-                    dialog.displayResult("Lỗi khi tìm kiếm hóa đơn.");
+                    String message = "Lỗi khi tìm kiếm hóa đơn.";
+                    view.displaySearchResult(message);
                 }
             }
         });

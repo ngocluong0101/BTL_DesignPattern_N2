@@ -11,7 +11,7 @@ public class CustomerView extends JFrame {
 
     public CustomerView() {
         setTitle("Customer Main Menu");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);
         setLayout(null); // Use null layout

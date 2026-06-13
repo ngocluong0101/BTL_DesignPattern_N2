@@ -2,6 +2,8 @@ package com.clothingstore.controller;
 
 import com.clothingstore.dao.notification.CustomerEventSubscriptionDAO;
 import com.clothingstore.patterns.sessionsingleton.Session;
+import com.clothingstore.component.Navbar;
+import com.clothingstore.util.Navigator;
 import com.clothingstore.view.customer.CustomerMainView;
 
 import javax.swing.*;
@@ -68,7 +70,6 @@ public class CustomerMainController {
 
     private void logout() {
         JOptionPane.showMessageDialog(view, "Đăng xuất");
-        view.dispose();
-        new LoginController();
+        Navigator.navigate(Navbar.NavItem.LOGIN, view);
     }
 }

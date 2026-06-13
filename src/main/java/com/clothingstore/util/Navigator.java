@@ -12,6 +12,7 @@ import com.clothingstore.view.customer.PointsManagementView;
 import com.clothingstore.view.order.ProductView;
 import com.clothingstore.view.promotion.AdminDiscountView;
 import com.clothingstore.controller.supplier.CreateSupplierController;
+import com.clothingstore.view.supplier.SupplierView;
 
 import javax.swing.*;
 import java.util.List;
@@ -35,7 +36,8 @@ public class Navigator {
                 break;
             case VOUCHER:
                 currentFrame.dispose();
-                new VoucherManagementController();
+                VoucherManagementController voucherManagementController = new VoucherManagementController();
+                voucherManagementController.showView();
                 break;
             case POINTS:
                 currentFrame.dispose();
@@ -67,8 +69,14 @@ public class Navigator {
                 break;
 
             case CREATE_SUPPLIER:
-                currentFrame.dispose();
-                new CreateSupplierController();
+                if (currentFrame instanceof SupplierView) {
+                    SupplierView supplierView = (SupplierView) currentFrame;
+                    supplierView.setVisible(false);
+                    new CreateSupplierController(supplierView);
+                } else {
+                    currentFrame.dispose();
+                    new CreateSupplierController();
+                }
                 break;
 
             case PRODUCT:

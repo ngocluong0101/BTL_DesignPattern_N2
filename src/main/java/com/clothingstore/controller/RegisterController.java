@@ -4,6 +4,8 @@ import com.clothingstore.dao.user.CustomerDAO;
 import com.clothingstore.model.Customer;
 import com.clothingstore.patterns.userbuilder.CustomerBuilder;
 import com.clothingstore.patterns.userbuilder.UserDirector;
+import com.clothingstore.util.Navigator;
+import com.clothingstore.component.Navbar;
 import com.clothingstore.view.auth.RegisterView;
 
 public class RegisterController {
@@ -41,15 +43,13 @@ public class RegisterController {
         try {
             customerDAO.createCustomer(customer);
             view.showMessage("Đăng ký thành công!");
-            view.dispose();
-            new LoginController();
+            Navigator.navigate(Navbar.NavItem.LOGIN, view);
         } catch (Exception e) {
             view.showError("Không thể đăng ký: " + e.getMessage());
         }
     }
 
     private void backToLogin() {
-        view.dispose();
-        new LoginController();
+        Navigator.navigate(Navbar.NavItem.LOGIN, view);
     }
 }

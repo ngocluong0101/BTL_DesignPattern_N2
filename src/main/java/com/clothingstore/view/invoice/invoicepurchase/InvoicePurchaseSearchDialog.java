@@ -6,9 +6,8 @@ import java.awt.*;
 public class InvoicePurchaseSearchDialog extends JDialog{
     private final JTextField txtSearchId;
     private final JButton btnSearch;
-    private final JTextArea resultArea;
 
-    public InvoicePurchaseSearchDialog(JFrame parent) {
+    public InvoicePurchaseSearchDialog(InvoicePurchaseView parent) {
         super(parent, "Tìm kiếm hóa đơn", true);
         setSize(400, 300);
         setLocationRelativeTo(parent);
@@ -21,10 +20,6 @@ public class InvoicePurchaseSearchDialog extends JDialog{
         btnSearch = new JButton("Xuất hóa đơn");
         topPanel.add(btnSearch);
         add(topPanel, BorderLayout.NORTH);
-
-        resultArea = new JTextArea();
-        resultArea.setEditable(false);
-        add(new JScrollPane(resultArea), BorderLayout.CENTER);
     }
 
     public JTextField getTxtSearchId() {
@@ -33,9 +28,5 @@ public class InvoicePurchaseSearchDialog extends JDialog{
 
     public JButton getBtnSearch() {
         return btnSearch;
-    }
-
-    public void displayResult(String result) {
-        resultArea.setText(result);
     }
 }

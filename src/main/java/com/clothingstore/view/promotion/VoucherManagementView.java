@@ -45,10 +45,6 @@ public class VoucherManagementView extends JFrame {
         setResizable(false);
         navbar = new Navbar(this);
         add(navbar, BorderLayout.NORTH);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        // add(voucherView);
-        setVisible(true);
         initializeData();
         initializeUI();
     }
