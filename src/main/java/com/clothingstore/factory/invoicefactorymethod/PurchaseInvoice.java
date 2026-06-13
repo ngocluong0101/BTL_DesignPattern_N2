@@ -1,8 +1,6 @@
 package com.clothingstore.factory.invoicefactorymethod;
 
-
-import com.clothingstore.dao.ConnectionManager;
-
+import com.clothingstore.database.ConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

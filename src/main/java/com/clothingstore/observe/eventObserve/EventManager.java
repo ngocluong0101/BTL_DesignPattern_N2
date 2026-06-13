@@ -1,9 +1,10 @@
-package com.bach.observe.event0bserve;
+package com.clothingstore.observe.eventObserve;
 
-import com.bach.dao.ConnectionManager;
-import com.bach.model.Customer;
-import com.bach.model.Event;
-import com.bach.model.Notification;
+
+import com.clothingstore.database.ConnectionManager;
+import com.clothingstore.model.Customer;
+import com.clothingstore.model.Event;
+import com.clothingstore.model.Notification;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class EventManager implements Subject {
         List<Customer> subscribedCustomers = getSubscribedCustomers();
         for (Customer customer : subscribedCustomers) {
             String message = "Sự kiện mới: " + event.getName() + ". Nội dung: " + event.getContent();
-            Notification notification = new Notification(customer.getId(), event.getId(), message, new Date());
+            Notification notification = new Notification(customer.getId(), event.getId(), message, new Date(), "sent");
             saveNotification(notification);
             for (Observer observer : observers) {
                 observer.update(notification);

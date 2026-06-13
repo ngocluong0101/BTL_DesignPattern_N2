@@ -4,6 +4,7 @@ import com.clothingstore.model.Supplier;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.clothingstore.database.ConnectionManager;
 
 public class SupplierDAO {
 

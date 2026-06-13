@@ -1,9 +1,9 @@
 package com.clothingstore.dao.user;
 
-import com.clothingstore.dao.ConnectionManager;
 import com.clothingstore.model.Customer;
 import com.clothingstore.patterns.userbuilder.CustomerBuilder;
 import com.clothingstore.patterns.userbuilder.UserDirector;
+import com.clothingstore.database.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

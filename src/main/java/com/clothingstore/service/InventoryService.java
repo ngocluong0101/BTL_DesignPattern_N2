@@ -1,8 +1,8 @@
 package com.clothingstore.service;
 
-import com.clothingstore.dao.ConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import com.clothingstore.database.ConnectionManager;
 
 public class InventoryService {
     public void decreaseStock(int orderId) throws Exception {

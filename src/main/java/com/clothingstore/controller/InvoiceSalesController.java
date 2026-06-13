@@ -1,9 +1,11 @@
 package com.clothingstore.controller;
 
+
+import com.clothingstore.factory.invoicefactorymethod.Invoice;
 import com.clothingstore.factory.invoicefactorymethod.InvoiceFactory;
 import com.clothingstore.factory.invoicefactorymethod.SalesInvoiceFactory;
-import com.clothingstore.view.invoicesales.InvoiceSalesView;
-import com.clothingstore.view.invoicesales.InvoiceSalesSearchDialog;
+import com.clothingstore.view.invoice.invoicesales.InvoiceSalesView;
+import com.clothingstore.view.invoice.invoicesales.InvoiceSalesSearchDialog;
 
 import javax.swing.*;
 import java.sql.SQLException;

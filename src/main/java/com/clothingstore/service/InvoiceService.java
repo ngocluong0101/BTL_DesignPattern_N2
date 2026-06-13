@@ -1,6 +1,5 @@
 package com.clothingstore.service;
 
-import com.clothingstore.dao.ConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,11 +1,11 @@
 package com.clothingstore.factory.invoicefactorymethod;
 
-import com.clothingstore.dao.ConnectionManager;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.clothingstore.database.ConnectionManager;
+
 
 public class SalesInvoice implements Invoice {
     private int invoiceId;

@@ -1,12 +1,12 @@
 package com.clothingstore.service;
 
-import com.clothingstore.dao.ConnectionManager;
 import com.clothingstore.dao.OrderDAO;
 import com.clothingstore.model.Order;
 import com.clothingstore.model.IVoucher;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import com.clothingstore.database.ConnectionManager;
 
 public class OrderService {
     private static OrderService instance;

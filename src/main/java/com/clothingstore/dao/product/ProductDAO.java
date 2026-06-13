@@ -1,6 +1,5 @@
 package com.clothingstore.dao.product;
 
-import com.clothingstore.dao.ConnectionManager;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ import com.clothingstore.model.product.PremiumProductFactory;
 import com.clothingstore.model.Product;
 import com.clothingstore.model.product.Product1;
 import com.clothingstore.model.product.ProductFactory;
+import com.clothingstore.database.ConnectionManager;
 
 public class ProductDAO {
 

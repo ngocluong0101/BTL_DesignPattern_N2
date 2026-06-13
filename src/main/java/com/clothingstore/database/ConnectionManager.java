@@ -1,4 +1,4 @@
-package com.clothingstore.dao;
+package com.clothingstore.database;
 
 import com.clothingstore.util.DBConfig;
 
@@ -26,7 +26,7 @@ public class ConnectionManager {
         return instance;
     }
 
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DBConfig.getUrl(), DBConfig.getUsername(), DBConfig.getPassword());
     }
 

@@ -1,4 +1,4 @@
-package com.bach.factory.invoicefactorymethod;
+package com.clothingstore.factory.invoicefactorymethod;
 
 import java.sql.SQLException;
 

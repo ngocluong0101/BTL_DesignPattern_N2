@@ -11,6 +11,7 @@ public class Admin {
     private String password;
     private String fullName;
     private String phone;
+    private String role;
 
     public Admin() {
     }
@@ -30,6 +31,14 @@ public class Admin {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPassword() {

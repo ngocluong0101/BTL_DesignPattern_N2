@@ -6,6 +6,7 @@ import com.clothingstore.model.FixedAmountVoucher;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.clothingstore.database.ConnectionManager;
 
 public class VoucherDAO {
     public void saveVoucher(IVoucher voucher) {

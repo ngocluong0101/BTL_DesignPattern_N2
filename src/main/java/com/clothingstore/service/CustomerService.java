@@ -1,11 +1,11 @@
 package com.clothingstore.service;
 
 
-import com.clothingstore.dao.ConnectionManager;
 import com.clothingstore.dao.user.CustomerDAO;
 import com.clothingstore.model.Customer;
 import java.sql.*;
 import java.util.List;
+import com.clothingstore.database.ConnectionManager;
 
 public class CustomerService {
     private static CustomerService instance;

@@ -4,6 +4,7 @@ package com.clothingstore.dao;
 import java.sql.*;
 import com.clothingstore.model.Order;
 import java.util.Date;
+import com.clothingstore.database.ConnectionManager;
 
 public class OrderDAO {
     public int createBooking(Connection conn, int customerId, int cartId, double totalAmount) throws SQLException {
